@@ -1,7 +1,4 @@
-using System.Linq;
-
 var builder = WebApplication.CreateBuilder(args);
-args.ToList().ForEach(arg => System.Diagnostics.Debug.WriteLine(arg));
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
@@ -22,13 +19,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
-
-/// <summary>
-/// Lists a video (any file)
-/// Defaults to mp4 if nothing is supplied
-/// Looks in current directory 
-/// </summary>
 app.MapGet("/list-video", (string? fileTypes, string? location) =>
 {
     fileTypes = fileTypes ?? "mp4";
